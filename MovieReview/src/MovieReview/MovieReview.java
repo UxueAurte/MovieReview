@@ -1,5 +1,8 @@
 package MovieReview;
 import weka.core.converters.ConverterUtils.DataSource;
+import weka.core.stemmers.LovinsStemmer;
+import weka.core.stopwords.Rainbow;
+import weka.core.tokenizers.AlphabeticTokenizer;
 import weka.core.Instances;
 import weka.filters.Filter;
 import weka.filters.unsupervised.attribute.StringToWordVector;
@@ -24,12 +27,17 @@ public class MovieReview {
 		Instances dev = devSource.getDataSet();
 		dev.setClassIndex(dev.numAttributes() - 1);
 		
-		// Clean prozesua egitea falta da
-		
+		System.out.println("Hasierako atributu kopurua: " + train.numAttributes());
+				
 		// ====================================================
 		// 2. Bektorizazioa egin (TF-IDF)
 		// ====================================================
 		StringToWordVector filter = new StringToWordVector();
+		
+		// Clean prozesua
+		filter.setTokenizer(new AlphabeticTokenizer());	// Hitzak bakarrik hartzen ditu (puntuazioak eta zenbakiak kanpora)
+		filter.setStemmer(new LovinsStemmer());		// Erroak ateratzeko (movies -> movi)
+		filter.setStopwordsHandler(new Rainbow()); 	// "the", "a", "of" bezalako hitzak kentzeko
 		
 		filter.setWordsToKeep(5000);	// gure hiztegi maximoa 5000 hitz izango ditu balio bakoitzeko
 		filter.setTFTransform(true);	// TF aktibatu
