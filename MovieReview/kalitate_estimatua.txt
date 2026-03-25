@@ -1,0 +1,7 @@
+Kalitate estimatua
+Accuracy: 77.75
+F1 (pos): 0.7626666666666666
+
+Nahasmen matrizea:
+168.0 48.0 
+41.0 143.0 
