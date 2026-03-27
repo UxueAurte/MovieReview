@@ -18,14 +18,14 @@ public class BektorizazioProbak {
 
     public static void main(String[] args) throws Exception {
 
-        // 📥 Cargar datasets
+        // Datuak kargatu
         Instances train = new DataSource("datuak/train.arff").getDataSet();
         Instances dev = new DataSource("datuak/dev.arff").getDataSet();
 
         train.setClassIndex(train.numAttributes() - 1);
         dev.setClassIndex(dev.numAttributes() - 1);
 
-        // 🔁 Probar TODAS las combinaciones
+        // Konbinazio guztiak probatu
         String[] vectorTypes = {"BoW", "TF", "TF-IDF"};
         String[] attrSelTypes = {"InfoGain", "GainRatio"};
 
@@ -40,9 +40,9 @@ public class BektorizazioProbak {
                                          String vectorType, String attrSelType) throws Exception {
 
         System.out.println("====================================");
-        System.out.println("Vectorization: " + vectorType + " | AttributeSelection: " + attrSelType);
+        System.out.println("Bektorizazioa: " + vectorType + " | AttributeSelection: " + attrSelType);
 
-        // 🔹 1. StringToWordVector
+        // 1. StringToWordVector
         StringToWordVector filter = new StringToWordVector();
         filter.setWordsToKeep(5000);
         filter.setLowerCaseTokens(true);
@@ -66,7 +66,7 @@ public class BektorizazioProbak {
         Instances trainFiltered = Filter.useFilter(train, filter);
         Instances devFiltered = Filter.useFilter(dev, filter);
 
-        // 🔹 2. Attribute Selection
+        // 2. Attribute Selection
         AttributeSelection attrSel = new AttributeSelection();
         Ranker ranker = new Ranker();
         ranker.setNumToSelect(1000);
@@ -83,15 +83,15 @@ public class BektorizazioProbak {
         trainFiltered = Filter.useFilter(trainFiltered, attrSel);
         devFiltered = Filter.useFilter(devFiltered, attrSel);
 
-        // 🔹 3. Clasificador: SMO (SVM)
+        // 3. Klasifikatzailea: SMO (SVM)
         SMO cls = new SMO();
         cls.buildClassifier(trainFiltered);
 
-        // 🔹 4. Evaluación en dev
+        // 4. Evaluación en dev
         Evaluation eval = new Evaluation(trainFiltered);
         eval.evaluateModel(cls, devFiltered);
 
-        // 🔹 5. Resultados en %
+        // 5. Emaitzak
         double accuracy = (1 - eval.errorRate()) * 100;
         double f1 = eval.fMeasure(1) * 100;
 

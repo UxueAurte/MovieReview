@@ -30,7 +30,7 @@ public class MovieReview {
 		System.out.println("Hasierako atributu kopurua: " + train.numAttributes());
 				
 		// ====================================================
-		// 2. Bektorizazioa egin (TF-IDF)
+		// 2. Bektorizazioa egin (BoW)
 		// ====================================================
 		StringToWordVector filter = new StringToWordVector();
 		
@@ -38,11 +38,12 @@ public class MovieReview {
 		filter.setTokenizer(new AlphabeticTokenizer());	// Hitzak bakarrik hartzen ditu (puntuazioak eta zenbakiak kanpora)
 		filter.setStemmer(new LovinsStemmer());		// Erroak ateratzeko (movies -> movi)
 		filter.setStopwordsHandler(new Rainbow()); 	// "the", "a", "of" bezalako hitzak kentzeko
-		
-		filter.setWordsToKeep(5000);	// gure hiztegi maximoa 5000 hitz izango ditu balio bakoitzeko
-		filter.setTFTransform(true);	// TF aktibatu
-		filter.setIDFTransform(true);	// IDF aktibatu
 		filter.setLowerCaseTokens(true);	// Letra xehean ipini
+		
+		// BoW
+		filter.setWordsToKeep(5000);	// gure hiztegi maximoa 5000 hitz izango ditu balio bakoitzeko
+		filter.setTFTransform(false);	// TF ez aktibatu
+		filter.setIDFTransform(false);	// IDF ez aktibatu
 		filter.setInputFormat(train);	// Filtroa entrenatu
 		
 		// Datu sortak bektorizatu (String -> int[])
