@@ -77,6 +77,8 @@ public class MovieReview {
 		// Gorde eta inprimatu konprobatzeko ondo dagoen
 		SerializationHelper.write("attrsel.model", attr);
 		System.out.println("Atributu kopurua selekzioa eta gero:" + trainSel.numAttributes());
+		
+		ParametroEkorketa.ekorketaExekutatu(trainSel,devSel);
 	}
 
 }

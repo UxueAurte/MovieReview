@@ -8,14 +8,15 @@ import weka.core.SelectedTag;
 
 public class ParametroEkorketa {
 
-    public void ejecutarEkorketa(Instances train, Instances test) {
+	
+    public static void ekorketaExekutatu(Instances train, Instances test) throws Exception {
         double[] cBaloreak = {0.01, 0.1, 1.0, 10.0, 100.0}; 
         double[] eBaloreak = {1.0, 2.0}; 
         int[] filterTypes = {
             SMO.FILTER_NORMALIZE,   
             SMO.FILTER_STANDARDIZE, 
             SMO.FILTER_NONE         
-        };
+        };	
 
         double accuracyOnena = -1.0;
         double cOnena = -1.0;
