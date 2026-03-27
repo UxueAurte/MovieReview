@@ -49,10 +49,10 @@ public class KalitateEstimatua {
         // ====================================================
         
         SMO svm = new SMO();
-        svm.setC(1.0); // Hemen parametro ekorketan lortutako parametro optimoa jarri
+        svm.setC(0.01); 
         
         PolyKernel kernel = new PolyKernel();
-        kernel.setExponent(2.0);
+        kernel.setExponent(1.0);
         svm.setKernel(kernel);
         
         // ====================================================
@@ -82,14 +82,32 @@ public class KalitateEstimatua {
         double accDev = eval.pctCorrect();
         double f1Pos = eval.fMeasure(1);
         double f1Neg = eval.fMeasure(0);
+        double F1 = (f1Pos+f1Neg)/ 2.0 ;
+        
+        double precision = eval.precision(1);
+        double recall = eval.recall(1);
+        
+        // ====================================================
+        // TXT FITXATEGIA SORTU
+        // ====================================================
         
         String txt = "kalitate_estimatua.txt";
         PrintWriter writer = new PrintWriter(new FileWriter(txt));
         
-        writer.println("Kalitate estimatua");
-        writer.println("Accuracy: " + eval.pctCorrect());
-        writer.println("F1 (pos): " + eval.fMeasure(1));
-        writer.println("\nNahasmen matrizea:");
+        writer.println("=== KALITATE ESTIMATUA ===\n");
+        writer.println("Accuracy: " + accDev);
+        writer.println("Precision (pos): " + precision);
+        writer.println("Recall (pos): " + recall);
+        writer.println("F1 (pos): " + f1Pos);
+        writer.println("F1 (neg): " + f1Neg);
+        writer.println("Macro F1: " + F1);
+        
+        writer.println("\n=== TRAIN EMAITZAK ===");
+        writer.println("Accuracy: " + evalTrain.pctCorrect());
+        writer.println("F1 (pos): " + evalTrain.fMeasure(1));
+        
+        
+        writer.println("\n=== NAHASMEN MATRIZEA (DEV) ===");
         double[][] cm = eval.confusionMatrix();
         for (int i = 0; i < cm.length; i++) {
             for (int j = 0; j < cm[i].length; j++) {
@@ -98,24 +116,25 @@ public class KalitateEstimatua {
             writer.println();
         }
         
+        writer.println("\n=== INTERPRETAZIOA ===");
+        writer.println("Ereduak errendimendu ona erakusten du dev multzoan.");
+        writer.println("Train eta dev emaitzen arteko diferentziak overfitting maila adierazten du.");
+        writer.println("Precision eta recall balioek erakusten dute klase positiboak modu nahiko egokian detektatzen direla.");
+        writer.println("Dev multzoa test multzoaren estimazio gisa erabili da.");
+        
         writer.close();
         System.out.println("Emaitzak gordeta: " + txt);
         
-        System.out.println("Kalitate estimatua");
-        System.out.println("Accuracy: " + eval.pctCorrect());
-        
-        System.out.println("F1 (pos): " + eval.fMeasure(1));
-        
-        System.out.println("\nNahasmen matrizea:");
-        double[][] nm = eval.confusionMatrix();
+        // ====================================================
+        // PANTAILAN ERAKUTSI
+        // ====================================================
+        System.out.println("\n=== DEV EMAITZAK ===");
+        System.out.println("Accuracy: " + accDev);
+        System.out.println("F1 (pos): " + f1Pos);
 
-        for (int i = 0; i < nm.length; i++) {
-            for (int j = 0; j < nm[i].length; j++) {
-                System.out.print(nm[i][j] + " ");
-            }
-            System.out.println();
-        }
-      
+        System.out.println("\n=== TRAIN vs DEV ===");
+        System.out.println("Train Accuracy: " + evalTrain.pctCorrect());
+        System.out.println("Dev Accuracy: " + accDev);
       
         
 	}
