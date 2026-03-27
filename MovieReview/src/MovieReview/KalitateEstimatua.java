@@ -15,7 +15,7 @@ public class KalitateEstimatua {
 	public static void main (String[] args) throws Exception {
 		
 		// ====================================================
-        // 1. Datuak kargatu
+        // DATUAK KARGATU
         // ====================================================
 		DataSource trainSource = new DataSource("datuak/train.arff");
         Instances train = trainSource.getDataSet();
@@ -26,7 +26,7 @@ public class KalitateEstimatua {
         dev.setClassIndex(dev.numAttributes() - 1);
         
         // ====================================================
-        // 2. Kargatu aurretik sortutako filtroak
+        // FILTROAK KARGATU
         // (vectorizer + attribute selection)
         // ====================================================
         
@@ -34,7 +34,7 @@ public class KalitateEstimatua {
         Filter attrsel = (Filter) SerializationHelper.read("attrsel.model");
         
         // ====================================================
-        // 3. Filtroak aplikatu
+        // FILTROAK APLIKATU
         // ====================================================
         vectorizer.setInputFormat(train);
         Instances trainBek = Filter.useFilter(train, vectorizer);
@@ -45,7 +45,7 @@ public class KalitateEstimatua {
         Instances devSel = Filter.useFilter(devBek, attrsel);
         
         // ====================================================
-        // 4. Azken modeloa sortu
+        // MODELOA SORTU
         // ====================================================
         
         SMO svm = new SMO();
@@ -56,21 +56,32 @@ public class KalitateEstimatua {
         svm.setKernel(kernel);
         
         // ====================================================
-        // 5. Entrenatu
+        // ENTRENATU
         // ====================================================
         
         svm.buildClassifier(trainSel);
         
         // ====================================================
-        // 6. Ebaluatu
+        // EBALUATU
         // ====================================================
         
         Evaluation eval = new Evaluation(trainSel);
         eval.evaluateModel(svm, devSel);
         
         // ====================================================
-        // 7. Emaitzak inprimatu eta txt batean gorde
+        // EBALUATU TRAIN-EN (OVERFITTING IKUSTEKO)
         // ====================================================
+        
+        Evaluation evalTrain = new Evaluation(trainSel);
+        evalTrain.evaluateModel(svm, trainSel);
+        
+        // ====================================================
+        // METRIKAK KALKULATU
+        // ====================================================
+        
+        double accDev = eval.pctCorrect();
+        double f1Pos = eval.fMeasure(1);
+        double f1Neg = eval.fMeasure(0);
         
         String txt = "kalitate_estimatua.txt";
         PrintWriter writer = new PrintWriter(new FileWriter(txt));
