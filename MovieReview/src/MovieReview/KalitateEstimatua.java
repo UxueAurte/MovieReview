@@ -45,7 +45,7 @@ public class KalitateEstimatua {
         Instances devSel = Filter.useFilter(devBek, attrsel);
         
         // ====================================================
-        // MODELOA SORTU
+        // MODELOA SORTU (PARAMETRO EKORKETAN LORTUTAKO BALIOEKIN)
         // ====================================================
         
         SMO svm = new SMO();
@@ -60,6 +60,7 @@ public class KalitateEstimatua {
         // ====================================================
         
         svm.buildClassifier(trainSel);
+        SerializationHelper.write("svm.model", svm);
         
         // ====================================================
         // EBALUATU
