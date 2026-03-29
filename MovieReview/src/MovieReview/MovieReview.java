@@ -80,6 +80,9 @@ public class MovieReview {
 		System.out.println("Atributu kopurua selekzioa eta gero:" + trainSel.numAttributes());
 		
 		ParametroEkorketa.ekorketaExekutatu(trainSel,devSel);
+		
+		KalitateEstimatua.main();
+		Iragarpenak.main();
 	}
 
 }

@@ -398,3 +398,8 @@ neg
 neg
 pos
 neg
+
+=== LABURPENA ===
+Positiboak: 192
+Negatiboak: 208
+Guztira: 400

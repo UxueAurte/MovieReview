@@ -12,7 +12,7 @@ import weka.core.converters.ConverterUtils.DataSource;
 import weka.filters.Filter;
 
 public class KalitateEstimatua {
-	public static void main (String[] args) throws Exception {
+	public static void main () throws Exception {
 		
 		// ====================================================
         // DATUAK KARGATU
@@ -129,11 +129,12 @@ public class KalitateEstimatua {
         // ====================================================
         // PANTAILAN ERAKUTSI
         // ====================================================
-        System.out.println("\n=== DEV EMAITZAK ===");
+        System.out.println("-----------------------------------------");
+        System.out.println("KALITATE ESTIMATUA ");
         System.out.println("Accuracy: " + accDev);
-        System.out.println("F1 (pos): " + f1Pos);
+        System.out.println("F-Score (pos): " + f1Pos);
 
-        System.out.println("\n=== TRAIN vs DEV ===");
+        System.out.println("\nTRAIN vs DEV");
         System.out.println("Train Accuracy: " + evalTrain.pctCorrect());
         System.out.println("Dev Accuracy: " + accDev);
       
