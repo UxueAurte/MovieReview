@@ -81,9 +81,9 @@ public class KalitateEstimatua {
         // ====================================================
         
         double accDev = eval.pctCorrect();
-        double f1Pos = eval.fMeasure(1);
-        double f1Neg = eval.fMeasure(0);
-        double F1 = (f1Pos+f1Neg)/ 2.0 ;
+        double fPos = eval.fMeasure(0);
+        double fNeg = eval.fMeasure(1);
+        double F1 = (fPos+fNeg)/ 2.0 ;
         
         double precision = eval.precision(1);
         double recall = eval.recall(1);
@@ -99,13 +99,13 @@ public class KalitateEstimatua {
         writer.println("Accuracy: " + accDev);
         writer.println("Precision (pos): " + precision);
         writer.println("Recall (pos): " + recall);
-        writer.println("F1 (pos): " + f1Pos);
-        writer.println("F1 (neg): " + f1Neg);
-        writer.println("Macro F1: " + F1);
+        writer.println("F-Score (pos): " + fPos);
+        writer.println("F-Score (neg): " + fNeg);
+        writer.println("Macro F-Score: " + F1);
         
         writer.println("\n=== TRAIN EMAITZAK ===");
         writer.println("Accuracy: " + evalTrain.pctCorrect());
-        writer.println("F1 (pos): " + evalTrain.fMeasure(1));
+        writer.println("F-Score (pos): " + evalTrain.fMeasure(0));
         
         
         writer.println("\n=== NAHASMEN MATRIZEA (DEV) ===");
@@ -132,11 +132,12 @@ public class KalitateEstimatua {
         System.out.println("-----------------------------------------");
         System.out.println("KALITATE ESTIMATUA ");
         System.out.println("Accuracy: " + accDev);
-        System.out.println("F-Score (pos): " + f1Pos);
+        System.out.println("F-Score (pos): " + fPos);
 
         System.out.println("\nTRAIN vs DEV");
         System.out.println("Train Accuracy: " + evalTrain.pctCorrect());
         System.out.println("Dev Accuracy: " + accDev);
+   
       
         
 	}

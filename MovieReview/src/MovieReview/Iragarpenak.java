@@ -26,6 +26,7 @@ public class Iragarpenak {
 		Instances testBek = Filter.useFilter(test, vectorizer);
 		
 		Instances testSel = Filter.useFilter(testBek, attrsel);
+		testSel.setClassIndex(testSel.numAttributes()-1);
 		
 		// MODELOA KARGATU
 		SMO svm = (SMO) SerializationHelper.read("svm.model");
