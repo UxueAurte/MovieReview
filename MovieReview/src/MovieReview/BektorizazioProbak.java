@@ -1,21 +1,26 @@
 package MovieReview;
 
+import weka.attributeSelection.GainRatioAttributeEval;
+import weka.attributeSelection.InfoGainAttributeEval;
+import weka.attributeSelection.Ranker;
+import weka.classifiers.Evaluation;
+import weka.classifiers.functions.SMO;
 import weka.core.Instances;
 import weka.core.converters.ConverterUtils.DataSource;
 import weka.filters.Filter;
-import weka.filters.unsupervised.attribute.StringToWordVector;
 import weka.filters.supervised.attribute.AttributeSelection;
+import weka.filters.unsupervised.attribute.StringToWordVector;
 
-import weka.attributeSelection.InfoGainAttributeEval;
-import weka.attributeSelection.GainRatioAttributeEval;
-import weka.attributeSelection.Ranker;
-
-import weka.classifiers.Classifier;
-import weka.classifiers.functions.SMO;
-import weka.classifiers.Evaluation;
-
+/**
+ * Testu-bektorizazio (BoW, TF, TF-IDF) eta atributu-selekzio (InfoGain, GainRatio) teknika desberdinen konbinazioak ebaluatzen ditu SMO sailkatzaile batekin, errendimendua konparatuz. 
+ */
 public class BektorizazioProbak {
-
+/**
+ * Testu-bektorizazio (BoW, TF, TF-IDF) eta atributu-selekzio (InfoGain, GainRatio) teknika desberdinen konbinazioak ebaluatzen ditu SMO sailkatzaile batekin, errendimendua konparatuz. 
+ * 
+ * @param args Train eta dev datu sortak.
+ * @throws Exception
+ */
     public static void main(String[] args) throws Exception {
 
         // Datuak kargatu

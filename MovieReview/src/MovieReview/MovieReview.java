@@ -10,8 +10,16 @@ import weka.core.SerializationHelper;
 import weka.filters.supervised.attribute.AttributeSelection;
 import weka.attributeSelection.*;
 
+/**
+ * Filmen iruzkinen testuak aurreprozesatzen ditu (BoW bektorizazioa eta InfoGain atributu-selekzioa), parametro-ekorketa exekutatzen du eta, azkenik, kalitatea estimatu eta iragarpenak sortzen ditu.
+ */
 public class MovieReview {
-	
+	/**
+	 * Filmen iruzkinen testuak aurreprozesatzen ditu (BoW bektorizazioa eta InfoGain atributu-selekzioa), parametro-ekorketa exekutatzen du eta, azkenik, kalitatea estimatu eta iragarpenak sortzen ditu.
+	 * 
+	 * @param args Train eta dev datu sortak.
+	 * @throws Exception
+	 */
 	public static void main(String[] args) throws Exception {
 		
 		// ====================================================

@@ -6,9 +6,17 @@ import weka.classifiers.Evaluation;
 import weka.core.Instances;
 import weka.core.SelectedTag;
 
+/**
+ * 	Parameter Fine-tuning bat exekutatzen du SMO eredu baten parametroak optimizatu eta ebaluatzeko. 
+ */
 public class ParametroEkorketa {
-
-	
+	/**
+	 * Parameter Fine-tuning bat exekutatzen du SMO eredu baten parametroak optimizatu eta ebaluatzeko. 
+	 * 
+	 * @param train Train datu sorta.
+	 * @param test Test datu sorta.
+	 * @throws Exception
+	 */
     public static void ekorketaExekutatu(Instances train, Instances test) throws Exception {
         double[] cBaloreak = {0.01, 0.1, 1.0, 10.0, 100.0}; 
         double[] eBaloreak = {1.0, 2.0}; 
@@ -22,8 +30,7 @@ public class ParametroEkorketa {
         double cOnena = -1.0;
         double eOnena = -1.0;
         int filterOnena = -1;
-        SMO smoOnena = null;
-
+        
         for (double c : cBaloreak) {
             for (double e : eBaloreak) {
                 for (int fType : filterTypes) {
@@ -49,7 +56,6 @@ public class ParametroEkorketa {
                             cOnena = c;
                             eOnena = e;
                             filterOnena = fType;
-                            smoOnena = smo; 
                         }
 
                     } catch (Exception ex) {}

@@ -10,8 +10,17 @@ import weka.core.SerializationHelper;
 import weka.core.converters.ConverterUtils.DataSource;
 import weka.filters.Filter;
 
+
+/**
+ * Aurrez gordetako iragazkiak eta eredua kargatzen ditu proba-multzo itsu bat sailkatzeko, iragarpenak testu-fitxategi batean gordez. 
+ */
 public class Iragarpenak {
-	
+	/**
+	 * Aurrez gordetako iragazkiak eta eredua kargatzen ditu proba-multzo itsu bat sailkatzeko, iragarpenak testu-fitxategi batean gordez. 
+	 * 
+	 * @param args Test_Blind datu sorta, vectorizer, attrsel eta svm modeloak.
+	 * @throws Exception
+	 */
 	public static void main (String[] args) throws Exception {
 		// TEST_BLIND.ARFF KARGATU
 		DataSource source = new DataSource("datuak/test_blind.arff");

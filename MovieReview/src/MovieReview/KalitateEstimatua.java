@@ -11,7 +11,16 @@ import weka.core.SerializationHelper;
 import weka.core.converters.ConverterUtils.DataSource;
 import weka.filters.Filter;
 
+/**
+ * Aurrez ezarritako iragazkiak eta parametro optimizatuak erabiliz SMO eredu bat entrenatzen du, bere errendimendua (doitasuna, F-score, nahasmen-matrizea) kalkulatuz eta testu-fitxategi batean gordez. 
+ */
 public class KalitateEstimatua {
+	/**
+	 * Aurrez ezarritako iragazkiak eta parametro optimizatuak erabiliz SMO eredu bat entrenatzen du, bere errendimendua (doitasuna, F-score, nahasmen-matrizea) kalkulatuz eta testu-fitxategi batean gordez. 
+	 * 
+	 * @param args Train eta Dev datu sortak, vectorizer eta attrsel modeloak.
+	 * @throws Exception
+	 */
 	public static void main (String[] args) throws Exception {
 		
         // DATUAK KARGATU
