@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html","k":"18"},{"p":"MovieReview","l":"BektorizazioProbak"},{"p":"MovieReview","l":"Iragarpenak"},{"p":"MovieReview","l":"KalitateEstimatua"},{"p":"MovieReview","l":"MovieReview"},{"p":"MovieReview","l":"ParametroEkorketa"}];updateSearchResults();
