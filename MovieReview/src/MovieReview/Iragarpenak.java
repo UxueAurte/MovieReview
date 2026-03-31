@@ -12,7 +12,7 @@ import weka.filters.Filter;
 
 public class Iragarpenak {
 	
-	public static void main () throws Exception {
+	public static void main (String[] args) throws Exception {
 		// TEST_BLIND.ARFF KARGATU
 		DataSource source = new DataSource("datuak/test_blind.arff");
 		Instances test = source.getDataSet();
@@ -48,6 +48,7 @@ public class Iragarpenak {
 
             writer.println(label);
         }
+        
         
         writer.println("\n=== LABURPENA ===");
         writer.println("Positiboak: " + posCount);

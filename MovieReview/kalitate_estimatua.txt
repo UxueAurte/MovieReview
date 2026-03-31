@@ -6,17 +6,16 @@ Recall (pos): 0.8315217391304348
 F-Score (pos): 0.8564814814814815
 F-Score (neg): 0.8315217391304348
 Macro F-Score: 0.8440016103059582
-
-=== TRAIN EMAITZAK ===
-Accuracy: 92.33333333333333
-F-Score (pos): 0.9205526770293609
+Error rate: 0.155
 
 === NAHASMEN MATRIZEA (DEV) ===
-185.0 31.0 
-31.0 153.0 
+
+            Aurreikuspena
+            pos	neg
+Erreala pos	185	31
+        neg	31	153
 
 === INTERPRETAZIOA ===
 Ereduak errendimendu ona erakusten du dev multzoan.
-Train eta dev emaitzen arteko diferentziak overfitting maila adierazten du.
 Precision eta recall balioek erakusten dute klase positiboak modu nahiko egokian detektatzen direla.
 Dev multzoa test multzoaren estimazio gisa erabili da.

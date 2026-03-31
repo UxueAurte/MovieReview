@@ -81,8 +81,8 @@ public class MovieReview {
 		
 		ParametroEkorketa.ekorketaExekutatu(trainSel,devSel);
 		
-		KalitateEstimatua.main();
-		Iragarpenak.main();
+		KalitateEstimatua.main(args);
+		Iragarpenak.main(args);
 	}
 
 }
