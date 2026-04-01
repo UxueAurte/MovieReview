@@ -92,7 +92,6 @@ public class KalitateEstimatua {
         
         double[][] cm = eval.confusionMatrix();
 
-	    // Klaseen izenak hartu (automatikoki!)
 	    String pos = devSel.classAttribute().value(0);
 	    String neg = devSel.classAttribute().value(1);
 	    writer.println("\n=== NAHASMEN MATRIZEA (DEV) ===\n");
