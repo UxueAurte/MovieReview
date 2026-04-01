@@ -24,11 +24,14 @@ public class KalitateEstimatua {
 	public static void main (String[] args) throws Exception {
 		
         // DATUAK KARGATU
-		DataSource trainSource = new DataSource("datuak/train.arff");
+		String trainPath = args[0];
+	    String devPath = args[1];
+	    
+		DataSource trainSource = new DataSource(trainPath);
         Instances train = trainSource.getDataSet();
         train.setClassIndex(train.numAttributes() - 1);
 
-        DataSource devSource = new DataSource("datuak/dev.arff");
+        DataSource devSource = new DataSource(devPath);
         Instances dev = devSource.getDataSet();
         dev.setClassIndex(dev.numAttributes() - 1);
         

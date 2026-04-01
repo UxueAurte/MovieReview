@@ -23,7 +23,8 @@ public class Iragarpenak {
 	 */
 	public static void main (String[] args) throws Exception {
 		// TEST_BLIND.ARFF KARGATU
-		DataSource source = new DataSource("datuak/test_blind.arff");
+	    String testPath = args[2];
+		DataSource source = new DataSource(testPath);
 		Instances test = source.getDataSet();
 		test.setClassIndex(test.numAttributes()-1);
 		
