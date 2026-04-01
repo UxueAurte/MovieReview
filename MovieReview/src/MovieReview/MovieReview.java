@@ -26,7 +26,7 @@ public class MovieReview {
 		// 1. datuak kargatu eta beren klasea definitu, defektuz azken instantzia izango dena
 		// ====================================================
 		if (args.length != 3) {
-	        System.out.println("Erabilera: java MovieReview <train.arff> <dev.arff>");
+	        System.out.println("Erabilera: java MovieReview <train.arff> <dev.arff> <test.arff>");
 	        return;
 	    }
 	    String trainPath = args[0];
