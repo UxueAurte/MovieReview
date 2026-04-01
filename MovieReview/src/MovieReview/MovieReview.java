@@ -25,13 +25,21 @@ public class MovieReview {
 		// ====================================================
 		// 1. datuak kargatu eta beren klasea definitu, defektuz azken instantzia izango dena
 		// ====================================================
+		if (args.length != 3) {
+	        System.out.println("Erabilera: java MovieReview <train.arff> <dev.arff>");
+	        return;
+	    }
+	    String trainPath = args[0];
+	    String devPath = args[1];
+	    String testPath = args[2];
+		
 		// Train
-		DataSource trainSource = new DataSource("datuak/train.arff");
+		DataSource trainSource = new DataSource(trainPath);
 		Instances train = trainSource.getDataSet();
 		train.setClassIndex(train.numAttributes() - 1);
 		
 		// Dev
-		DataSource devSource = new DataSource("datuak/dev.arff");
+		DataSource devSource = new DataSource(devPath);
 		Instances dev = devSource.getDataSet();
 		dev.setClassIndex(dev.numAttributes() - 1);
 		
